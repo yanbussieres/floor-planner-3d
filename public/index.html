@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Floor Planner 3D</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">Floor Planner 3D</div>
+    <div class="seg" id="viewSeg">
+      <button data-view="plan" title="Top-down plan (P)">Plan</button>
+      <button data-view="3d" title="3D view (3)">3D</button>
+    </div>
+    <div class="seg" id="toolSeg">
+      <button data-tool="select" title="Select and move (V)">Select</button>
+      <button data-tool="wall" title="Draw walls corner by corner (W)">Wall</button>
+      <button data-tool="room" title="Drag out a rectangular room (M)">Room</button>
+      <button data-tool="measure" title="Measure a distance (D)">Measure</button>
+    </div>
+    <div class="group">
+      <button id="undoBtn" title="Undo (⌘Z)">Undo</button>
+      <button id="redoBtn" title="Redo (⇧⌘Z)">Redo</button>
+      <button id="fitBtn" title="Fit the plan in view (F)">Fit</button>
+      <button id="lowBtn" title="Lower the walls in 3D so you can see in (C)">Low walls</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="group">
+      <button id="underlayBtn" title="Put a floor-plan image underneath to trace">Trace image…</button>
+      <button id="importBtn">Open…</button>
+      <button id="exportBtn">Save file</button>
+      <button id="sampleBtn" title="Reload the plan built from your sketch and video">My apartment</button>
+      <button id="clearBtn">New</button>
+    </div>
+    <input type="file" id="underlayFile" accept="image/*" hidden>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+  </header>
+
+  <aside class="library" id="library"></aside>
+
+  <main class="stage">
+    <canvas id="scene"></canvas>
+    <div id="labels"></div>
+  </main>
+
+  <aside class="panel" id="panel"></aside>
+
+  <footer class="status">
+    <span id="hint"></span>
+    <span id="conflicts"></span>
+    <span id="coords"></span>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
